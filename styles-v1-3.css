@@ -1,0 +1,35 @@
+/* ===== v1.3 motion fix =====
+   Demo mode intentionally ignores OS "reduce motion".
+   User can pause using the on-page button instead.
+*/
+.motion-demo-indicator{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-left:2px;
+  color:#4f7385;
+  font-size:11px;
+  letter-spacing:.05em;
+}
+.motion-demo-indicator::before{
+  content:"";
+  width:7px;height:7px;border-radius:50%;
+  background:#22d6a5;
+  box-shadow:0 0 10px rgba(34,214,165,.85);
+  animation:motionHeartbeat 1s ease-in-out infinite alternate;
+}
+@keyframes motionHeartbeat{
+  from{transform:scale(.72);opacity:.45}
+  to{transform:scale(1.28);opacity:1}
+}
+
+/* Pause everything only when the user explicitly presses the pause button */
+body.motion-paused .motion-field *,
+body.motion-paused .hero-grid,
+body.motion-paused .hero-glow,
+body.motion-paused .status-pulse,
+body.motion-paused .rail-track i,
+body.motion-paused .hero,
+body.motion-paused .motion-demo-indicator::before{
+  animation-play-state:paused !important;
+}
