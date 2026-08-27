@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="歐陽芳泉｜AI 教育、實體運算、智慧學習系統與數位多媒體設計研究">
+  <title>歐陽芳泉｜研究與系統設計</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-v1-1.css">
+  <link rel="stylesheet" href="styles-v1-2.css">
+  <link rel="stylesheet" href="styles-v1-3.css">
+  <link rel="stylesheet" href="styles-v1-4.css">
+  <link rel="stylesheet" href="styles-v1-5.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="回到首頁">
+      <span class="brand-dot"></span>
+      <span>歐陽芳泉 / RESEARCH SYSTEMS</span>
+    </a>
+    <nav aria-label="主要導覽">
+      <a href="#research">研究主題</a>
+      <a href="#systems">系統與平台</a>
+      <a href="#contact">聯絡</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <canvas id="networkCanvas" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="motion-field" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+        <span class="data-streak streak-1"></span>
+        <span class="data-streak streak-2"></span>
+        <span class="data-streak streak-3"></span>
+        <span class="scan-line"></span>
+      </div>
+
+      <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-main">
+          <div class="hero-copy">
+            <div class="eyebrow">AI × 實體運算 × 智慧學習系統</div>
+            <h1>設計讓 AI 與實體世界協作的<br>智慧學習系統</h1>
+            <p class="hero-lead">
+              我的研究聚焦於人工智慧輔助學習、實體運算與教育執行環境設計，
+              探索如何透過系統架構重新分配複雜度，讓學習者能在適當的抽象層次進行理解、創作與實作。
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#systems">瀏覽研究系統</a>
+              <a class="btn btn-secondary" href="#contact">聯絡我</a>
+              <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false">暫停動畫</button>
+              <span class="motion-demo-indicator" id="motionIndicator">動態運作中</span>
+            </div>
+
+            <div class="identity-line">
+              <strong>歐陽芳泉</strong>
+              <span>副教授 · 數位多媒體設計 · AI 教育與實體運算研究</span>
+            </div>
+          </div>
+
+          <aside class="portrait-stage" aria-label="歐陽芳泉個人照片">
+            <div class="portrait-tech-frame">
+              <span class="corner corner-tl"></span>
+              <span class="corner corner-tr"></span>
+              <span class="corner corner-bl"></span>
+              <span class="corner corner-br"></span>
+
+              <div class="portrait-glow" aria-hidden="true"></div>
+
+              <figure class="portrait-card">
+                <img src="ouyang.jpeg" alt="歐陽芳泉個人照片">
+                <figcaption>
+                  <span class="portrait-status"><i></i> RESEARCHER PROFILE</span>
+                  <strong>歐陽芳泉</strong>
+                  <small>AI Education · Physical Computing · Learning Systems</small>
+                </figcaption>
+              </figure>
+
+              <span class="tech-chip chip-a">AI EDUCATION</span>
+              <span class="tech-chip chip-b">RUNTIME</span>
+              <span class="tech-chip chip-c">PHYSICAL COMPUTING</span>
+
+              <div class="portrait-data-line line-a" aria-hidden="true"></div>
+              <div class="portrait-data-line line-b" aria-hidden="true"></div>
+              <div class="portrait-data-line line-c" aria-hidden="true"></div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="live-stack reveal" aria-label="即時研究系統視覺化">
+          <div class="live-stack-head">
+            <span><i class="status-pulse"></i> LIVE RESEARCH STACK</span>
+            <small>AI / Runtime / Hardware</small>
+          </div>
+          <div class="live-stack-body">
+            <div class="signal-rail">
+              <span class="rail-label">LEARNER</span>
+              <div class="rail-track"><i></i><i></i><i></i></div>
+            </div>
+            <div class="signal-rail">
+              <span class="rail-label">AI</span>
+              <div class="rail-track"><i></i><i></i><i></i></div>
+            </div>
+            <div class="signal-rail">
+              <span class="rail-label">RUNTIME</span>
+              <div class="rail-track"><i></i><i></i><i></i></div>
+            </div>
+            <div class="signal-rail">
+              <span class="rail-label">HARDWARE</span>
+              <div class="rail-track"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="system-map reveal" aria-label="研究系統關係圖">
+          <div class="map-head">
+            <span><i></i> RESEARCH SYSTEM MAP</span>
+            <small>複雜度在不同層次之間重新分配</small>
+          </div>
+
+          <div class="map-flow">
+            <article class="map-node">
+              <span class="node-index">01</span>
+              <strong>學習者</strong>
+              <small>目標 · 意義建構 · 驗證</small>
+            </article>
+            <span class="flow-arrow">↔</span>
+            <article class="map-node">
+              <span class="node-index">02</span>
+              <strong>AI</strong>
+              <small>協助 · 生成 · 回饋</small>
+            </article>
+            <span class="flow-arrow">↔</span>
+            <article class="map-node">
+              <span class="node-index">03</span>
+              <strong>執行環境</strong>
+              <small>抽象化 · 排程 · 可觀測性</small>
+            </article>
+            <span class="flow-arrow">↔</span>
+            <article class="map-node">
+              <span class="node-index">04</span>
+              <strong>硬體</strong>
+              <small>感測 · 裝置 · 實體互動</small>
+            </article>
+          </div>
+
+          <div class="map-tags">
+            <span>語意介面</span>
+            <span>可預測執行環境</span>
+            <span>人機共享脈絡</span>
+            <span>硬體抽象化</span>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="section research" id="research">
+      <div class="section-heading split reveal">
+        <div>
+          <span class="section-kicker">RESEARCH FOCUS</span>
+          <h2>研究主題</h2>
+        </div>
+        <p>
+          我關注學習者、AI、執行環境與硬體之間如何分工，
+          以及系統如何承擔不必要的技術複雜度，同時保留學習者對系統行為的理解與控制。
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="info-card reveal">
+          <span class="card-code">R01</span>
+          <h3>AI-ready 智慧學習系統</h3>
+          <p>從穩定的高層語意介面、學習歷程資料到 AI 協作，設計可支援教與學的教育執行環境。</p>
+        </article>
+        <article class="info-card reveal">
+          <span class="card-code">R02</span>
+          <h3>實體運算與 Runtime</h3>
+          <p>透過硬體抽象、排程、裝置協同與 Gateway 架構，讓複雜互動系統維持可預測與可觀測。</p>
+        </article>
+        <article class="info-card reveal">
+          <span class="card-code">R03</span>
+          <h3>人–AI 協作</h3>
+          <p>研究學習者、AI 與系統如何共享語意與責任，使 AI 的協助能被理解、驗證與合理使用。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section systems" id="systems">
+      <div class="section-heading reveal">
+        <span class="section-kicker">SELECTED RESEARCH SYSTEMS</span>
+        <h2>研究平台與架構</h2>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <span class="project-type">AI-READY PLATFORM</span>
+          <h3>MangoBox</h3>
+          <p>
+            連結學習者、裝置、Gateway、Runtime 與學習歷程資料的 AI-ready 實體程式設計平台，
+            支援多重抽象層次與教學情境。
+          </p>
+          <a href="#contact">了解系統 →</a>
+        </article>
+
+        <article class="project-card reveal">
+          <span class="project-type">DESIGN PRINCIPLE</span>
+          <h3>複雜度重新分配</h3>
+          <p>
+            從系統觀點分析學習者、AI、Runtime 與硬體分別應承擔哪些複雜度，
+            並以抽象層次重新配置責任。
+          </p>
+          <a href="#contact">了解概念 →</a>
+        </article>
+
+        <article class="project-card reveal">
+          <span class="project-type">LEARNING MODEL</span>
+          <h3>VAMP-CT</h3>
+          <p>
+            結合視覺化表徵、AI 支架、實體多媒體互動與專題創作，
+            支援運算思維與設計導向程式學習。
+          </p>
+          <a href="#contact">了解研究 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-panel reveal">
+        <div>
+          <span class="section-kicker">COLLABORATION / RESEARCH / EDUCATION</span>
+          <h2>讓 AI 與運算系統變得更可理解、<br>更可使用，也更能支持創作。</h2>
+          <p>研究合作、教育科技、實體運算、AI 協作與數位多媒體設計，歡迎交流。</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:">聯絡我</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 歐陽芳泉</span>
+    <span>AI · EDUCATION · PHYSICAL COMPUTING</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
