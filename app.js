@@ -155,3 +155,11 @@
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
 })();
+
+// Load portfolio expansion after the base homepage is ready.
+(() => {
+  const script = document.createElement('script');
+  script.src = 'portfolio-v1-6.js';
+  script.defer = true;
+  document.body.appendChild(script);
+})();
