@@ -8,6 +8,10 @@
   const brandLabel = document.querySelector('.site-header .brand span:last-child');
   if (brandLabel) brandLabel.textContent = '歐陽芳泉 / FANG-CHUAN OU YANG';
 
+  // Keep the three portrait chips at the same semantic level: research fields.
+  const learningSystemsChip = document.querySelector('.portrait-tech-frame .chip-b');
+  if (learningSystemsChip) learningSystemsChip.textContent = 'LEARNING SYSTEMS';
+
   const nav = document.querySelector('.site-header nav');
   if (nav) nav.innerHTML = `
     <a href="index.html#research">研究主題</a>
