@@ -1,6 +1,10 @@
 /* ===== v2.0 multi-page / list-first layout ===== */
 :root{--v2max:1120px}
 
+/* Shared bilingual personal brand */
+.site-header .brand > span:last-child{font-size:0}
+.site-header .brand > span:last-child::after{content:"歐陽芳泉 / FANG-CHUAN OU YANG";font-size:13px;font-weight:800;letter-spacing:.05em}
+
 /* Homepage: convert content cards to editorial rows */
 .section{padding-top:72px;padding-bottom:72px}
 .card-grid.plain-list,.project-grid.plain-list{
