@@ -5,6 +5,9 @@
   style.href = 'styles-v2.css';
   document.head.appendChild(style);
 
+  const brandLabel = document.querySelector('.site-header .brand span:last-child');
+  if (brandLabel) brandLabel.textContent = '歐陽芳泉 / FANG-CHUAN OU YANG';
+
   const nav = document.querySelector('.site-header nav');
   if (nav) nav.innerHTML = `
     <a href="index.html#research">研究主題</a>
