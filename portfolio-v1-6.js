@@ -20,6 +20,40 @@
   document.querySelectorAll('.card-grid, .project-grid').forEach(el => el.classList.add('plain-list'));
   document.querySelectorAll('.info-card, .project-card').forEach(el => el.classList.add('plain-row'));
 
+  // Research focus: long-term research agenda rather than product-only architecture.
+  const research = document.getElementById('research');
+  if (research) {
+    const intro = research.querySelector('.section-heading > p');
+    if (intro) {
+      intro.textContent = '目前研究聚焦於學習分析、實體運算與人–AI–系統協作，從學習資料、抽象層次與執行環境三個面向，探索 AI 時代的教育科技如何支援學習診斷、創作實作與學習者主導性。';
+    }
+
+    const items = research.querySelectorAll('.info-card');
+    const researchFocus = [
+      {
+        title: '學習分析與 AI 精準教學',
+        text: '結合學習歷程資料、即時診斷與生成式 AI，建立能支援教師決策、個別化回饋與學習介入的智慧學習環境。'
+      },
+      {
+        title: '實體運算與多重抽象層次',
+        text: '以實體程式設計平台為基礎，探索硬體抽象、Runtime、Gateway 與多層次程式介面，讓學習者能依任務與能力在適當的抽象層次進行理解、設計與實作。'
+      },
+      {
+        title: '人–AI–系統協作與複雜度重新分配',
+        text: '研究學習者、AI、執行環境與硬體如何共享語意、責任與驗證機制，將適合自動化的底層複雜度交由系統承擔，同時保留學習者在問題界定、規劃、判斷、驗證與創作上的主導性。'
+      }
+    ];
+
+    items.forEach((item, index) => {
+      const data = researchFocus[index];
+      if (!data) return;
+      const title = item.querySelector('h3');
+      const text = item.querySelector('p');
+      if (title) title.textContent = data.title;
+      if (text) text.textContent = data.text;
+    });
+  }
+
   const contact = document.getElementById('contact');
   if (!contact || document.getElementById('directory')) return;
 
