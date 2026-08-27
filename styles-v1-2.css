@@ -1,0 +1,130 @@
+/* ===== v1.2 forced visible motion ===== */
+.motion-field{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+
+.orb{
+  position:absolute;
+  display:block;
+  border-radius:50%;
+  filter:blur(1px);
+  mix-blend-mode:multiply;
+}
+.orb::after{
+  content:"";
+  position:absolute;
+  inset:20%;
+  border-radius:inherit;
+  border:1px solid rgba(255,255,255,.52);
+}
+.orb-1{
+  width:260px;height:260px;
+  right:6%;top:13%;
+  background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.85),rgba(30,186,239,.34) 26%,rgba(43,143,255,.12) 60%,transparent 72%);
+  animation:orbOne 7s ease-in-out infinite alternate;
+}
+.orb-2{
+  width:180px;height:180px;
+  right:28%;top:52%;
+  background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.75),rgba(56,230,179,.30) 28%,rgba(56,230,179,.06) 64%,transparent 75%);
+  animation:orbTwo 9s ease-in-out infinite alternate;
+}
+.orb-3{
+  width:110px;height:110px;
+  right:42%;top:20%;
+  background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.78),rgba(119,110,255,.24) 28%,transparent 70%);
+  animation:orbThree 6s ease-in-out infinite alternate;
+}
+@keyframes orbOne{
+  0%{transform:translate(0,0) scale(.96) rotate(0)}
+  100%{transform:translate(-120px,80px) scale(1.12) rotate(20deg)}
+}
+@keyframes orbTwo{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(95px,-72px) scale(.88)}
+}
+@keyframes orbThree{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(-80px,105px)}
+}
+
+.data-streak{
+  position:absolute;
+  height:2px;
+  width:360px;
+  opacity:.55;
+  background:linear-gradient(90deg,transparent,rgba(16,191,232,.2),rgba(16,191,232,.95),rgba(56,230,179,.7),transparent);
+  filter:drop-shadow(0 0 6px rgba(16,191,232,.55));
+  transform:rotate(-18deg);
+}
+.data-streak::after{
+  content:"";
+  position:absolute;
+  right:20%;
+  top:50%;
+  width:7px;height:7px;
+  border-radius:50%;
+  transform:translateY(-50%);
+  background:#35d9f4;
+  box-shadow:0 0 14px rgba(16,191,232,.95);
+}
+.streak-1{
+  top:21%;left:48%;
+  animation:streakA 4.2s linear infinite;
+}
+.streak-2{
+  top:48%;left:60%;
+  opacity:.38;
+  animation:streakB 5.6s linear infinite .8s;
+}
+.streak-3{
+  top:69%;left:42%;
+  opacity:.3;
+  animation:streakC 6.4s linear infinite 1.7s;
+}
+@keyframes streakA{
+  from{transform:translateX(-260px) rotate(-18deg);opacity:0}
+  15%{opacity:.58}
+  80%{opacity:.58}
+  to{transform:translateX(520px) rotate(-18deg);opacity:0}
+}
+@keyframes streakB{
+  from{transform:translateX(280px) rotate(12deg);opacity:0}
+  18%{opacity:.42}
+  80%{opacity:.42}
+  to{transform:translateX(-650px) rotate(12deg);opacity:0}
+}
+@keyframes streakC{
+  from{transform:translateX(-380px) rotate(-6deg);opacity:0}
+  18%{opacity:.34}
+  78%{opacity:.34}
+  to{transform:translateX(650px) rotate(-6deg);opacity:0}
+}
+
+.scan-line{
+  position:absolute;
+  left:38%;
+  right:0;
+  height:120px;
+  background:linear-gradient(to bottom,transparent,rgba(37,167,222,.07),rgba(37,167,222,.16),transparent);
+  filter:blur(.2px);
+  animation:scanDown 6.8s linear infinite;
+}
+@keyframes scanDown{
+  from{top:-140px}
+  to{top:100%}
+}
+
+/* Make the hero itself breathe slightly */
+.hero{
+  background-size:140% 140%;
+  animation:heroGradient 12s ease-in-out infinite alternate;
+}
+@keyframes heroGradient{
+  0%{background-position:0% 30%}
+  100%{background-position:100% 70%}
+}
