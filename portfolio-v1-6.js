@@ -5,6 +5,100 @@
   style.href = 'styles-v2.css';
   document.head.appendChild(style);
 
+  // Mobile header: keep the desktop navigation unchanged, but collapse it
+  // into a compact menu on phones so every destination remains reachable.
+  const mobileStyle = document.createElement('style');
+  mobileStyle.textContent = `
+    .mobile-nav-toggle{
+      display:none;
+      width:42px;
+      height:42px;
+      flex:0 0 42px;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      border:1px solid rgba(23,108,144,.18);
+      border-radius:12px;
+      color:#17384b;
+      background:rgba(255,255,255,.72);
+      box-shadow:0 8px 24px rgba(17,65,91,.08);
+      backdrop-filter:blur(12px);
+      cursor:pointer;
+    }
+    .mobile-nav-toggle span,
+    .mobile-nav-toggle::before,
+    .mobile-nav-toggle::after{
+      content:"";
+      display:block;
+      position:absolute;
+      width:18px;
+      height:2px;
+      border-radius:2px;
+      background:currentColor;
+      transition:transform .22s ease, opacity .22s ease;
+    }
+    .mobile-nav-toggle{position:relative}
+    .mobile-nav-toggle::before{transform:translateY(-6px)}
+    .mobile-nav-toggle::after{transform:translateY(6px)}
+    .site-header.nav-open .mobile-nav-toggle span{opacity:0}
+    .site-header.nav-open .mobile-nav-toggle::before{transform:rotate(45deg)}
+    .site-header.nav-open .mobile-nav-toggle::after{transform:rotate(-45deg)}
+
+    @media(max-width:820px){
+      .site-header{
+        height:64px;
+        padding:0 16px 0 18px;
+        gap:12px;
+      }
+      .site-header .brand{
+        min-width:0;
+        flex:1 1 auto;
+        overflow:hidden;
+        white-space:nowrap;
+      }
+      .site-header .brand > span:last-child::after{
+        content:"歐陽芳泉";
+        font-size:14px;
+        letter-spacing:.04em;
+      }
+      .mobile-nav-toggle{display:inline-flex}
+      .site-header nav{
+        position:absolute;
+        top:calc(100% + 1px);
+        left:12px;
+        right:12px;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0!important;
+        padding:8px;
+        border:1px solid rgba(23,108,144,.16);
+        border-radius:16px;
+        background:rgba(248,252,254,.96);
+        box-shadow:0 20px 50px rgba(17,65,91,.16);
+        backdrop-filter:blur(20px) saturate(135%);
+      }
+      .site-header.nav-open nav{display:flex}
+      .site-header nav a,
+      .site-header nav a:nth-child(2),
+      .site-header nav a:nth-child(3){
+        display:block!important;
+        padding:11px 13px;
+        border-radius:10px;
+        font-size:14px;
+        font-weight:700;
+        color:#294c5f;
+        white-space:nowrap;
+      }
+      .site-header nav a:hover,
+      .site-header nav a:focus-visible{
+        color:#008eaf;
+        background:rgba(16,191,232,.08);
+      }
+    }
+  `;
+  document.head.appendChild(mobileStyle);
+
   const brandLabel = document.querySelector('.site-header .brand span:last-child');
   if (brandLabel) brandLabel.textContent = '歐陽芳泉 / FANG-CHUAN OU YANG';
 
@@ -12,14 +106,51 @@
   const learningSystemsChip = document.querySelector('.portrait-tech-frame .chip-b');
   if (learningSystemsChip) learningSystemsChip.textContent = 'LEARNING SYSTEMS';
 
-  const nav = document.querySelector('.site-header nav');
+  const header = document.querySelector('.site-header');
+  const nav = header?.querySelector('nav');
   if (nav) nav.innerHTML = `
     <a href="index.html#research">研究主題</a>
     <a href="about.html">關於我</a>
     <a href="projects.html">研究計畫</a>
     <a href="publications.html">著作出版</a>
+    <a href="https://circleoyang.github.io/MangoBox-Platform/">MangoBox</a>
     <a href="#contact">聯絡</a>
   `;
+
+  if (header && nav) {
+    let toggle = header.querySelector('.mobile-nav-toggle');
+    if (!toggle) {
+      toggle = document.createElement('button');
+      toggle.className = 'mobile-nav-toggle';
+      toggle.type = 'button';
+      toggle.setAttribute('aria-label', '開啟導覽選單');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '<span></span>';
+      nav.insertAdjacentElement('afterend', toggle);
+    }
+
+    const closeMenu = () => {
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', '開啟導覽選單');
+    };
+
+    toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const opening = !header.classList.contains('nav-open');
+      header.classList.toggle('nav-open', opening);
+      toggle.setAttribute('aria-expanded', String(opening));
+      toggle.setAttribute('aria-label', opening ? '關閉導覽選單' : '開啟導覽選單');
+    });
+
+    nav.addEventListener('click', closeMenu);
+    document.addEventListener('click', (event) => {
+      if (!header.contains(event.target)) closeMenu();
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 820) closeMenu();
+    }, { passive:true });
+  }
 
   document.querySelectorAll('.card-grid, .project-grid').forEach(el => el.classList.add('plain-list'));
   document.querySelectorAll('.info-card, .project-card').forEach(el => el.classList.add('plain-row'));
